@@ -26,6 +26,7 @@ public class User implements Model{
     private String lastName;
     private String age;
     private String phone;
+    private String email;
     private String address;
     private String emergencyContact;
     private String NIF;
@@ -127,6 +128,14 @@ public class User implements Model{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

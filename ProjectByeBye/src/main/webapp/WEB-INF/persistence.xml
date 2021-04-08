@@ -18,9 +18,9 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://${prod.jdbc.host}/${prod.jdbc.database}?useSSL=false&amp;useTimezone=true&amp;serverTimezone=UTC"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mylighthouse?allowPublicKeyRetrieval=true&amp;useSSL=false;useTimezone=true&amp;serverTimezone=UTC"/>
         <property name="user" value="root"/>
-        <property name="password" value="$21Janjan"/>
+        <property name="password" value="21Janjan"/>
 
         <!-- c3p0 database connection pool management properties -->
         <property name="minPoolSize" value="1"/>
