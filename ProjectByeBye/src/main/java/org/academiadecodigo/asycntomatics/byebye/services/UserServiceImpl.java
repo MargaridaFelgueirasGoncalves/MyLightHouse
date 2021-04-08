@@ -17,13 +17,13 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
 
-    public User getUser() {
-        return user;
+    public UserDao getUser() {
+        return userDao;
     }
 
     @Autowired
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Integer id) {
 
-        User user = Optional.ofNullable(userDao.findById(id));
+        Optional<User> user = Optional.ofNullable(userDao.findById(id));
 
         userDao.delete(id);
     }
