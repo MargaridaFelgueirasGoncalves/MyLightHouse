@@ -1,5 +1,6 @@
 package org.academiadecodigo.asycntomatics.byebye.dao;
 
+import org.academiadecodigo.asycntomatics.byebye.model.Model;
 import org.academiadecodigo.asycntomatics.byebye.model.User;
 
 import javax.persistence.EntityManager;
@@ -8,40 +9,39 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public class userDao implements Dao<User>{
+public abstract class GenericDao<T extends Model> implements Dao<T>{
+
+    protected Class<T> modeltype;
 
 
-    private Class<User> user;
-
-
-    public userDao(Class<User> user){
-        this.user = user;
+    public GenericDao(Class<T> modeltype) {
+        this.modeltype = modeltype;
     }
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public List<User> findAll() {
-        CriteriaQuery<User> criteriaQuery = em.getCriteriaBuilder().createQuery(user);
-        Root<User> root = criteriaQuery.from(user);
+    public List<T> findAll() {
+        CriteriaQuery<T> criteriaQuery = em.getCriteriaBuilder().createQuery(modeltype);
+        Root<T> root = criteriaQuery.from(modeltype);
         return em.createQuery(criteriaQuery).getResultList();
 
     }
 
     @Override
-    public User findById(Integer id) {
-        return em.find(user, id);
+    public T findById(Integer id) {
+        return em.find(modeltype, id);
     }
 
     @Override
-    public User saveOrUpdate(User modelObject) {
+    public T saveOrUpdate(T modelObject) {
         return em.merge(modelObject);
     }
 
     @Override
     public void delete(Integer id) {
-        em.remove(em.find(user, id));
+        em.remove(em.find(modeltype, id));
     }
 
     public void setEm(EntityManager em) {

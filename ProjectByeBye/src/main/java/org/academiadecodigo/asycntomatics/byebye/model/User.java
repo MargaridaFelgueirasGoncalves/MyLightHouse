@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="user")
-public class User {
+public class User implements Model{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,6 +91,8 @@ public class User {
         return id;
     }
 
+
+    @Override
     public void setId(Integer id) {
         this.id = id;
     }

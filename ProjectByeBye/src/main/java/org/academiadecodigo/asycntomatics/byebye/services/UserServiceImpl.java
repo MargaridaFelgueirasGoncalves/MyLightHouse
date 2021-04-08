@@ -1,6 +1,8 @@
 package org.academiadecodigo.asycntomatics.byebye.services;
 
 import javassist.NotFoundException;
+import org.academiadecodigo.asycntomatics.byebye.dao.Dao;
+import org.academiadecodigo.asycntomatics.byebye.dao.UserDao;
 import org.academiadecodigo.asycntomatics.byebye.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,7 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private Dao userDao;
+    private UserDao userDao;
 
 
     public User getUser() {
