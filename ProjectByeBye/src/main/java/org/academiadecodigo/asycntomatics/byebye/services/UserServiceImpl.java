@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private CustomerDao customerDao;
+    private Dao userDao;
 
 
     public User getUser() {
@@ -26,27 +26,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(Integer id) {
-        customerDao.findById(id);
+       return userDao.findById(id);
     }
 
     @Override
     public User save(User user) {
-        return customerDao.saveOrUpdate(user);
+        return userDao.saveOrUpdate(user);
     }
 
     @Transactional
     @Override
     public void delete(Integer id) {
 
-        User user = Optional.ofNullable(customerDao.findById(id));
+        User user = Optional.ofNullable(userDao.findById(id));
 
-        customerDao.delete(id);
+        userDao.delete(id);
     }
 
     @Override
     public List<User> list() {
 
-        return customerDao.findAll();
+        return userDao.findAll();
 
     }
 }
