@@ -2,28 +2,23 @@ package org.academiadecodigo.asycntomatics.byebye.controllers;
 
 import org.academiadecodigo.asycntomatics.byebye.model.User;
 import org.academiadecodigo.asycntomatics.byebye.services.UserService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import sun.tools.jconsole.JConsole;
-
-import javax.validation.Valid;
-
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
+    private UserService userService;
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
-
-    private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET, path = { "/login"})
     public String login() {

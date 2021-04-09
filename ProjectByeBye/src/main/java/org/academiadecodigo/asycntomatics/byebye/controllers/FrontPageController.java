@@ -27,7 +27,19 @@ public class FrontPageController {
 
     @RequestMapping(method = RequestMethod.GET, path = { "/", ""})
     public String frontPage() {
-        return "register";
+        return "home";
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/login")
+    public String loginPage() {
+        return "log_in";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = { "/", ""})
+    public String frontPage() {
+        return "log_in";
+    }
+
+
 
 }
