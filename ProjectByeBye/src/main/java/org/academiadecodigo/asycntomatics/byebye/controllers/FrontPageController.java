@@ -35,11 +35,14 @@ public class FrontPageController {
         return "log_in";
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = { "/", ""})
-    public String frontPage() {
-        return "log_in";
+    @RequestMapping(method = RequestMethod.GET, path = "/aboutus")
+    public String aboutUs() {
+        return "about";
     }
 
-
+    @RequestMapping(method = RequestMethod.GET, path = "/services")
+    public String services() {
+        return "services";
+    }
 
 }

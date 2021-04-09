@@ -20,6 +20,9 @@
 <div class="brand_logo_container">
 </div>
 <div class="container">
+	<div class="row bg-dark justify-content-center text-white">
+		<h2>Fill with your information:</h2>
+	</div>
 	<div class="row">
 		<div class="col-sm-8">
 			<form class="form-horizontal" th:object="${user}" th:action="@{'/user'}" method="post">
@@ -27,70 +30,61 @@
 				<input type="hidden" th:field="*{id}"/>
 
 				<div class="form-group" th:classappend="${#fields.hasErrors('firstName')} ? has-error">
-					<label class="col-sm-2 control-label">First Name:</label>
+					<label class="col-sm-6 col-lg-9 control-label">First Name:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{firstName}"/>
-						<span class="help-block" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name error messages</span>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('lastName')} ? has-error">
-					<label class="col-sm-2 control-label">Last Name:</label>
+					<label class="col-sm-6 col-lg-9 control-label">Last Name:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{lastName}"/>
-						<span class="help-block" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name error messages</span>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
-					<label class="col-sm-2 control-label">Email:</label>
+					<label class="col-sm-6 col-lg-9 control-label">Email:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{email}"/>
-						<span class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error messages</span>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('NIF')} ? has-error">
-					<label class="col-sm-2 control-label">NIF:</label>
+					<label class="col-sm-6 col-lg-9 control-label">NIF:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{NIF}"/>
-						<span class="help-block" th:if="${#fields.hasErrors('NIF')}" th:errors="*{NIF}">Phone error messages</span>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('address')} ? has-error">
-					<label class="col-sm-2 control-label">Address:</label>
+					<label class="col-sm-6 col-lg-9 control-label">Address:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{address}"/>
-						<span class="help-block" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address error messages</span>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('password')} ? has-error">
-					<label class="col-sm-2 control-label">Password:</label>
+					<label class="col-sm-6 col-lg-9 control-label">Password:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{password}"/>
-						<span class="help-block" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Phone error messages</span>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('phone')} ? has-error">
-					<label class="col-sm-2 control-label">Phone:</label>
+					<label class="col-sm-6 col-lg-9 control-label">Phone:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{phone}"/>
-						<span class="help-block" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone error messages</span>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('age')} ? has-error">
-					<label class="col-sm-2 control-label">Age:</label>
+					<label class="col-sm-6 col-lg-9 control-label">Age:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{age}"/>
-						<span class="help-block" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Phone error messages</span>
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('emergencyContact')} ? has-error">
-					<label class="col-sm-2 control-label">Emergency Contact:</label>
+					<label class="col-sm-6 col-lg-9 control-label">Emergency Contact:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{emergencyContact}"/>
-						<span class="help-block" th:if="${#fields.hasErrors('emergencyContact')}" th:errors="*{emergencyContact}">Phone error messages</span>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-3">
+					<div class="col-sm-6">
 						<button type="submit" class="btn btn-primary" name="action" value="save">Submit</button>
 						<button type="cancel" class="btn btn-danger" name="action" value="cancel">Cancel</button>
 					</div>

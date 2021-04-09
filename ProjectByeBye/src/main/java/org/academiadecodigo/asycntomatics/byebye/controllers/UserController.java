@@ -3,6 +3,7 @@ package org.academiadecodigo.asycntomatics.byebye.controllers;
 import org.academiadecodigo.asycntomatics.byebye.model.User;
 import org.academiadecodigo.asycntomatics.byebye.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,14 +42,35 @@ public class UserController {
     public String saveCustomer(@ModelAttribute("user") User user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            return "user/add-update";
+            return "/";
         }
 
         User savedUser = userService.save(user);
 
         redirectAttributes.addFlashAttribute("lastAction", "Saved " + user.getFirstName() + " " + user.getLastName());
 
-        return "redirect:user/register";
+        return "redirect:user/posregister";
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/api/newuser")
+    public String saveCustomerApi(@RequestBody User user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            return "/";
+        }
+
+        User savedUser = userService.save(user);
+
+        redirectAttributes.addFlashAttribute("lastAction", "Saved " + user.getFirstName() + " " + user.getLastName());
+
+        return "redirect:user/posregister";
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, path = "/posregister")
+    public String posRegister(@PathVariable Integer id, Model model) {
+        model.addAttribute("user", userService.get(id));
+        return "register/after_registration";
     }
 
 }
