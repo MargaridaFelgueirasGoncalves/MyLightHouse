@@ -1,0 +1,7 @@
+DELETE FROM user;
+INSERT INTO user(ID, CREATIONTIME, UPDATETIME, VERSION, FIRSTNAME, LASTNAME, AGE, PHONE, EMAIL, ADDRESS, EMERGENCYCONTACT, NIF, PASSWORD) VALUES
+  (1, TIMESTAMP '2017-10-10 08:45:56.468', TIMESTAMP '2017-10-10 08:45:56.468', 0, 'Rui', 'Ferrão', '20', '934213456', 'mail@gmail.com', 'Rua X Porto', '231468394', 'ola'),
+  (2, TIMESTAMP '2017-10-10 08:45:56.481', TIMESTAMP '2017-10-10 08:45:56.481', 0, 'Sergio', 'Gouveia', '40', '932789456', 'mail@gmail.com', 'addressssss', '457959947','777888'),
+  (3, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'Bruno', 'Ferreira', '28', '932789456', 'mail@gmail.com', 'addressssss', '457959947','777888'),
+  (4, TIMESTAMP '2017-10-10 08:45:56.482', TIMESTAMP '2017-10-10 08:45:56.482', 0, 'No Accounts', 'No name', '932789456', 'mail@gmail.com', 'addressssss', '457959947', '777888');
+
