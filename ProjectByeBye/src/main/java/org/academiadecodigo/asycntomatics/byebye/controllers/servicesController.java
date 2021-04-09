@@ -2,9 +2,11 @@ package org.academiadecodigo.asycntomatics.byebye.controllers;
 
 import org.academiadecodigo.asycntomatics.byebye.services.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
 @RequestMapping("/menu")
 public class servicesController {
