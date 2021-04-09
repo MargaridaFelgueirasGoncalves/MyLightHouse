@@ -2,17 +2,16 @@ package org.academiadecodigo.asycntomatics.byebye.controllers;
 
 import org.academiadecodigo.asycntomatics.byebye.model.User;
 import org.academiadecodigo.asycntomatics.byebye.services.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -27,23 +26,23 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, path = { "/register"})
     public String register(Model model) {
         model.addAttribute("user", new User());
-        return "registerForm";
+        return "register";
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}/edit")
     public String editCustomer(@PathVariable Integer id, Model model) {
         model.addAttribute("user", userService.get(id));
-        return "registerForm";
+        return "register";
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/", ""}, params = "action=save")
-    public String saveCustomer(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, RedirectAttributes redirectAttributes)  {
+    public String saveCustomer(@RequestBody Model model, RedirectAttributes redirectAttributes)  {
 
-        System.out.println(bindingResult.getModel());
+        User user = new User();
 
-        if (bindingResult.hasErrors()) {
-            return "registerForm";
-        }
+        BeanUtils.copyProperties(model, user);
+
+        System.out.println(user);
 
         User savedUser = userService.save(user);
 
