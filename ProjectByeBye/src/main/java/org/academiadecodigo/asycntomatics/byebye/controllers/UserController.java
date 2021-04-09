@@ -3,18 +3,25 @@ package org.academiadecodigo.asycntomatics.byebye.controllers;
 import org.academiadecodigo.asycntomatics.byebye.model.User;
 import org.academiadecodigo.asycntomatics.byebye.services.UserService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import sun.tools.jconsole.JConsole;
 
 import javax.validation.Valid;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     private UserService userService;
 
@@ -32,23 +39,21 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, path = "/{id}/edit")
     public String editCustomer(@PathVariable Integer id, Model model) {
         model.addAttribute("user", userService.get(id));
-        return "register";
+        return "register/" + id;
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/", ""}, params = "action=save")
-    public String saveCustomer(@RequestBody Model model, RedirectAttributes redirectAttributes)  {
+    @RequestMapping(method = RequestMethod.POST, path = {"/", ""})
+    public String saveCustomer(@ModelAttribute("user") User user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        User user = new User();
-
-        BeanUtils.copyProperties(model, user);
-
-        System.out.println(user);
+        if (bindingResult.hasErrors()) {
+            return "user/add-update";
+        }
 
         User savedUser = userService.save(user);
 
         redirectAttributes.addFlashAttribute("lastAction", "Saved " + user.getFirstName() + " " + user.getLastName());
-        return "services";
-                //"redirect:/customer/" + user.getId();
+
+        return "redirect:user/register";
     }
 
 }

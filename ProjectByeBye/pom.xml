@@ -135,12 +135,6 @@
       <version>4.3.11.RELEASE</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.thymeleaf</groupId>
-      <artifactId>thymeleaf-spring4</artifactId>
-      <version>3.0.8.RELEASE</version>
-    </dependency>
-
   </dependencies>
 
   <build>
@@ -183,8 +177,6 @@
           <configuration>
             <url>http://localhost:8080/manager/text</url>
             <server>tomcat</server>
-            <username>maven</username>
-            <password>maven</password>
             <path>/javabank5</path>
           </configuration>
         </plugin>

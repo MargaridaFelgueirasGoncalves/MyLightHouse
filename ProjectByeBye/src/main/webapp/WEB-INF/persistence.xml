@@ -19,8 +19,8 @@
 
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mylighthouse?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useTimezone=true&amp;serverTimezone=UTC"/>
-        <property name="user" value="root"/>
-        <property name="password" value="21Janjan"/>
+        <property name="user" value="dbuser"/>
+        <property name="password" value="incorrect"/>
 
         <!-- c3p0 database connection pool management properties -->
         <property name="minPoolSize" value="1"/>

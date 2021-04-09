@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
        return userDao.findById(id);
     }
 
+    @Transactional
     @Override
     public User save(User user) {
         return userDao.saveOrUpdate(user);
